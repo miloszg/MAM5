@@ -1,157 +1,102 @@
 package zx.opengles.meshes;
 
-class TexturedPyramidMesh extends BaseMesh {
+public class TexturedPyramidMesh extends BaseMesh
+{
+
     public TexturedPyramidMesh()
     {
-        final float[] positionData = {
-                // Przednia ściana
-                -1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
+        float[] triangleVertices =
+                {
+                        // Przednia ściana
+                        0.0f, 1.0f, 0.0f,
+                        -1.0f, -1.0f, 1.0f,
+                        1.0f, -1.0f, 1.0f,
 
-                // Prawa ściana
-                1.0f, 1.0f, 1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                1.0f, -1.0f, -1.0f,
-                1.0f, 1.0f, -1.0f,
+                        // Prawa ściana
+                        0.0f, 1.0f, 0.0f,
+                        1.0f, -1.0f, 1.0f,
+                        1.0f, -1.0f, -1.0f,
 
-                // Tylna ściana
-                1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
-                1.0f, -1.0f, -1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, -1.0f,
+                        // Tylna ściana
+                        0.0f, 1.0f, 0.0f,
+                        1.0f, -1.0f, -1.0f,
+                        -1.0f, -1.0f, -1.0f,
 
-                // Lewa ściana
-                -1.0f, 1.0f, -1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f,
-                -1.0f, -1.0f, 1.0f,
-                -1.0f, 1.0f, 1.0f,
+                        // Lewa ściana
+                        0.0f, 1.0f, 0.0f,
+                        -1.0f, -1.0f, -1.0f,
+                        -1.0f, -1.0f, 1.0f,
 
-                // Górna ściana
-                -1.0f, 1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
-                -1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, 1.0f,
-                1.0f, 1.0f, -1.0f,
+                        // Dolna ściana
+                        1.0f, -1.0f, -1.0f,
+                        1.0f, -1.0f, 1.0f,
+                        -1.0f, -1.0f, -1.0f,
+                        1.0f, -1.0f, 1.0f,
+                        -1.0f, -1.0f, 1.0f,
+                        -1.0f, -1.0f, -1.0f
+                };
 
-                // Dolna ściana
-                1.0f, -1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f,
-                1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, 1.0f,
-                -1.0f, -1.0f, -1.0f
-        };
+        float[] textCoordData =
+                {
+                        0.5f, 1.0f,
+                        0.0f, 0.0f,
+                        1.0f, 0.0f,
 
-        // Współrzędne tekstury są takie same dla wszystkich ścian.
-        final float[] texCoordData = {
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f,
+                        0.5f, 1.0f,
+                        0.0f, 0.0f,
+                        1.0f, 0.0f,
 
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f,
+                        0.5f, 1.0f,
+                        0.0f, 0.0f,
+                        1.0f, 0.0f,
 
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f,
+                        0.5f, 1.0f,
+                        0.0f, 0.0f,
+                        1.0f, 0.0f,
 
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f,
+                        0.0f, 0.0f,
+                        0.0f, 1.0f,
+                        1.0f, 0.0f,
+                        0.0f, 1.0f,
+                        1.0f, 1.0f,
+                        1.0f, 0.0f
+                };
 
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f,
+        float[] normalData =
+                {
+                        // Przednia ściana
+                        0.0f, 1.0f, 1.0f,
+                        0.0f, 1.0f, 1.0f,
+                        0.0f, 1.0f, 1.0f,
 
-                0.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 0.0f,
-                0.0f, 1.0f,
-                1.0f, 1.0f,
-                1.0f, 0.0f
-        };
+                        // Prawa ściana
+                        1.0f, 1.0f, 0.0f,
+                        1.0f, 1.0f, 0.0f,
+                        1.0f, 1.0f, 0.0f,
 
-        final float[] normalData = {
-                // Przednia ściana
-                0.0f, 0.0f, 1.0f,
-                0.0f, 0.0f, 1.0f,
-                0.0f, 0.0f, 1.0f,
-                0.0f, 0.0f, 1.0f,
-                0.0f, 0.0f, 1.0f,
-                0.0f, 0.0f, 1.0f,
+                        // Tylna ściana
+                        0.0f, 1.0f, -1.0f,
+                        0.0f, 1.0f, -1.0f,
+                        0.0f, 1.0f, -1.0f,
 
-                // Prawa ściana
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
+                        // Lewa ściana
+                        -1.0f, 1.0f, 0.0f,
+                        -1.0f, 1.0f, 0.0f,
+                        -1.0f, 1.0f, 0.0f,
 
-                // Tylna ściana
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
-                0.0f, 0.0f, -1.0f,
+                        // Dolna ściana
+                        0.0f, -1.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f,
+                        0.0f, -1.0f, 0.0f
+                };
 
-                // Lewa ściana
-                -1.0f, 0.0f, 0.0f,
-                -1.0f, 0.0f, 0.0f,
-                -1.0f, 0.0f, 0.0f,
-                -1.0f, 0.0f, 0.0f,
-                -1.0f, 0.0f, 0.0f,
-                -1.0f, 0.0f, 0.0f,
+        this.numberOfVertices = triangleVertices.length / 3;
 
-                // Górna ściana
-                0.0f, 1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-                0.0f, 1.0f, 0.0f,
-
-                // Dolna ściana
-                0.0f, -1.0f, 0.0f,
-                0.0f, -1.0f, 0.0f,
-                0.0f, -1.0f, 0.0f,
-                0.0f, -1.0f, 0.0f,
-                0.0f, -1.0f, 0.0f,
-                0.0f, -1.0f, 0.0f
-        };
-
-        numberOfVertices = 36;
-
-        positionBuffer = createBuffer(positionData);
-        texCoordsBuffer = createBuffer(texCoordData);
-        normalBuffer = createBuffer(normalData);
+        this.positionBuffer = this.createBuffer(triangleVertices);
+        this.texCoordsBuffer = this.createBuffer(textCoordData);
+        this.normalBuffer = this.createBuffer(normalData);
     }
 }

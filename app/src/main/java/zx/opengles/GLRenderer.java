@@ -16,6 +16,7 @@ import javax.microedition.khronos.opengles.GL10;
 
 import zx.opengles.meshes.CubeMesh;
 import zx.opengles.meshes.TexturedCubeMesh;
+import zx.opengles.meshes.TexturedPyramidMesh;
 import zx.opengles.shaders.ShaderProgram;
 
 /**
@@ -58,6 +59,7 @@ public class GLRenderer implements GLSurfaceView.Renderer
     // Modele obiektów.
     protected CubeMesh cubeMesh;
     protected TexturedCubeMesh texturedCubeMesh;
+    protected TexturedPyramidMesh texturedPyramidMesh;
 
     // Adresy tekstur w pamięci modułu graficznego.
     protected int crateTextureDataHandle;
@@ -72,6 +74,7 @@ public class GLRenderer implements GLSurfaceView.Renderer
 
         cubeMesh = new CubeMesh();
         texturedCubeMesh = new TexturedCubeMesh();
+        texturedPyramidMesh = new TexturedPyramidMesh();
     }
 
     @Override
@@ -90,7 +93,10 @@ public class GLRenderer implements GLSurfaceView.Renderer
         GLES20.glDepthMask(true);
 
         // Wczytanie tekstur do pamięci.
-        crateTextureDataHandle = readTexture(R.drawable.crate_borysses_deviantart_com);
+        //crateTextureDataHandle = readTexture(R.drawable.crate_borysses_deviantart_com);
+
+        // Zamiana na kostkę
+        crateTextureDataHandle = readTexture(R.drawable.stone_agf81_deviantart_com);
 
         // Utworzenie shaderów korzystających z kolorów wierzchołków.
         colShaders = new ShaderProgram();
@@ -148,8 +154,8 @@ public class GLRenderer implements GLSurfaceView.Renderer
 
         Matrix.rotateM(modelMatrix, 0, -xAngle,0,1.0f, 0.0f );
         Matrix.rotateM(modelMatrix, 0, -yAngle,1.0f,0, 0.0f );
-        drawShape(texturedCubeMesh.getPositionBuffer(), null, texturedCubeMesh.getNormalBuffer(), texturedCubeMesh.getTexCoordsBuffer(),
-                    texShaders, texturedCubeMesh.getNumberOfVertices());
+        drawShape(texturedPyramidMesh.getPositionBuffer(), null, texturedPyramidMesh.getNormalBuffer(), texturedPyramidMesh.getTexCoordsBuffer(),
+                    texShaders, texturedPyramidMesh.getNumberOfVertices());
     }
 
     protected void drawShape(final FloatBuffer positionBuffer, final FloatBuffer colourBuffer, final FloatBuffer normalBuffer, final FloatBuffer texCoordsBuffer,
