@@ -40,10 +40,10 @@
             android:text="Orange" />
 
         <Button
-            android:id="@+id/lightWhiteButton"
+            android:id="@+id/lightPinkButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="White" />
+            android:text="Pink" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -20,12 +20,14 @@ public class ShaderProgram
     public int _MVPMatrixHandle=-1;
     public int _MVMatrixHandle=-1;
     public int _diffuseTextureHandle =-1;
-
+    public int _lightColour =-1;
+    public int _lightPosition =-1;
     // Adresy atrybutów w vertex shaderze.
     public int _vertexPositionHandle=-1;
     public int _vertexColourHandle=-1;
     public int _vertexNormalHandle=-1;
     public int _vertexTexCoordHandle=-1;
+
 
     public void init(int vertexShaderId, int fragmentShaderId, String[] attributeBindings, Context appContext, String debugName)
     {
@@ -44,6 +46,9 @@ public class ShaderProgram
         _vertexNormalHandle = GLES20.glGetAttribLocation(programHandle, "vertexNormal");
         _vertexTexCoordHandle = GLES20.glGetAttribLocation(programHandle, "vertexTexCoord");
         _diffuseTextureHandle = GLES20.glGetUniformLocation(programHandle, "diffuseTexture");
+
+        _lightColour = GLES20.glGetUniformLocation(programHandle, "lightColour");
+        _lightPosition = GLES20.glGetUniformLocation(programHandle, "lightPosition");
     }
 
     protected int createShaders(int vertexShaderId, int fragmentShaderId, String[] attributeBindings, Context appContext, String debugName)

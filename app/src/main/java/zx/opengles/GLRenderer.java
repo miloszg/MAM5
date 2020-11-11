@@ -8,6 +8,7 @@ import android.opengl.GLSurfaceView;
 import android.opengl.GLUtils;
 import android.opengl.Matrix;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.nio.FloatBuffer;
 
@@ -144,6 +145,26 @@ public class GLRenderer implements GLSurfaceView.Renderer
 
         // Transformacja i rysowanie brył.
         GLES20.glUseProgram(texShaders.programHandle); // Użycie shaderów korzystających z teksturowania.
+
+        // Zmiana koloru
+        switch (MainActivity.colorId){
+            case 1:
+                //orange
+                GLES20.glUniform4f(texShaders._lightColour, 1.0f, 0.4f, 0.4f, 1.0f);
+                break;
+            case 2:
+                //pink
+                GLES20.glUniform4f(texShaders._lightColour, 1.0f, 0.4f, 1.0f, 1.0f);
+                break;
+            default:
+                //white
+                GLES20.glUniform4f(texShaders._lightColour, 1.0f, 1.0f, 1.0f, 1.0f);
+                break;
+        }
+
+        // Zmiana pozycji światła
+        GLES20.glUniform3f(texShaders._lightPosition, 1.0f, MainActivity.lightPosition, 1.0f);
+
         GLES20.glActiveTexture(GLES20.GL_TEXTURE0); // Wykorzystanie tekstury o indeksie 0.
         GLES20.glBindTexture(GLES20.GL_TEXTURE_2D, crateTextureDataHandle); // Podpięcie tekstury skrzyni.
         GLES20.glUniform1i(texShaders._diffuseTextureHandle, 0); // Przekazanie shaderom indeksu tekstury (0).
